@@ -46,6 +46,7 @@ function deleteList() {
         list = [];
         saveListInLocalStorage();
         toggleListView();
+        listElement.innerHTML = "";
     }
 }
 
