@@ -3,14 +3,9 @@
     const dispatch = createEventDispatcher();
 
     export let item;
-    export let index;
 
     function deleteItem() {
         dispatch("delete", item.id);
-    }
-
-    function focus(element) {
-        if (index == 0) element.focus();
     }
 </script>
 
@@ -27,7 +22,6 @@
     </button>
 
     <input
-        use:focus
         disabled={item.done}
         type="text"
         placeholder="Item name"

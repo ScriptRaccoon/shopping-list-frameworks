@@ -63,9 +63,8 @@
 
 {#if list.length > 0}
     <ul>
-        {#each list as item, index (item.id)}
+        {#each list as item (item.id)}
             <Item
-                {index}
                 bind:item
                 on:delete={deleteItem}
                 on:save={saveListInLocalStorage}
