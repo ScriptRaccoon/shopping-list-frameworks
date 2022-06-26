@@ -16,8 +16,8 @@ function init() {
     if (savedList) {
         list = JSON.parse(savedList);
         // TODO: solve bug with order of items
-        for (const item of list) {
-            createItem(item);
+        for (let i = list.length - 1; i >= 0; i--) {
+            createItem(list[i]);
         }
     } else {
         list = [];
