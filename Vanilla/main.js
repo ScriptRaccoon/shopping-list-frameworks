@@ -15,7 +15,6 @@ function init() {
     const savedList = localStorage.getItem("list");
     if (savedList) {
         list = JSON.parse(savedList);
-        // TODO: solve bug with order of items
         for (let i = list.length - 1; i >= 0; i--) {
             createItem(list[i]);
         }
@@ -33,9 +32,11 @@ function toggleListView() {
     if (list.length == 0) {
         listElement.style.display = "none";
         addText.style.display = "block";
+        trashButton.style.display = "none";
     } else {
         addText.style.display = "none";
         listElement.style.display = "block";
+        trashButton.style.display = "inline";
     }
 }
 
@@ -85,7 +86,7 @@ function createItem(item) {
 
     const deleteButton = document.createElement("button");
     deleteButton.innerHTML = `<i class="fa-solid fa-xmark" />`;
-    deleteButton.classList.add("actionButton");
+    deleteButton.classList.add("delete", "actionButton");
 
     itemElement.append(buyButton, nameInput, deleteButton);
     listElement.prepend(itemElement);
