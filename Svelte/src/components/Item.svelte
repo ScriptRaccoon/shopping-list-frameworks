@@ -1,11 +1,20 @@
 <script>
     import { createEventDispatcher } from "svelte";
+
     const dispatch = createEventDispatcher();
 
     export let item;
 
     function deleteItem() {
         dispatch("delete", item.id);
+    }
+
+    function focusWhenNew(element) {
+        if (item.new) {
+            console.log(item);
+            element.focus();
+            delete item.new;
+        }
     }
 </script>
 
@@ -22,6 +31,7 @@
     </button>
 
     <input
+        use:focusWhenNew
         disabled={item.done}
         type="text"
         placeholder="Item name"

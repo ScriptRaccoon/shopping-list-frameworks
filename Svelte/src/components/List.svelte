@@ -19,6 +19,7 @@
             name: "",
             done: false,
             id: crypto.randomUUID(),
+            new: true,
         };
         list = [item, ...list];
         saveListInLocalStorage();
