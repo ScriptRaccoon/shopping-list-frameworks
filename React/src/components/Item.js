@@ -22,8 +22,10 @@ function Item({ item, deleteItem, changeName, toggleDone }) {
                     styles.actionButton + " " + styles.buyButton
                 }
                 onClick={() => toggleDone(item.id)}
+                aria-label="Buy item"
             >
                 <i
+                    aria-hidden="true"
                     className={
                         item.done
                             ? "fa-solid fa-check"
@@ -37,6 +39,7 @@ function Item({ item, deleteItem, changeName, toggleDone }) {
                 ref={nameInput}
                 type="text"
                 placeholder="Item name"
+                aria-label="Item name"
                 onChange={(e) => changeName(item.id, e.target.value)}
                 value={item.name}
             />
@@ -45,8 +48,9 @@ function Item({ item, deleteItem, changeName, toggleDone }) {
                     styles.actionButton + " " + styles.deleteBtn
                 }
                 onClick={() => deleteItem(item.id)}
+                aria-label="Delete item"
             >
-                <i className="fa-solid fa-xmark" />
+                <i aria-hidden="true" className="fa-solid fa-xmark" />
             </button>
         </li>
     );

@@ -58,15 +58,26 @@ function List() {
     return (
         <>
             <menu className={styles.menu}>
-                <button className={styles.button} onClick={addItem}>
-                    <i className="fa-solid fa-plus" />
+                <button
+                    aria-label="Add item"
+                    className={styles.button}
+                    onClick={addItem}
+                >
+                    <i
+                        aria-hidden="true"
+                        className="fa-solid fa-plus"
+                    />
                 </button>
                 {list.length > 0 && (
                     <button
+                        aria-label="Delete list"
                         className={styles.button}
                         onClick={deleteList}
                     >
-                        <i className="fa-solid fa-trash-can" />
+                        <i
+                            aria-hidden="true"
+                            className="fa-solid fa-trash-can"
+                        />
                     </button>
                 )}
             </menu>
