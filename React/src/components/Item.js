@@ -1,3 +1,4 @@
+import styles from "./Item.module.css";
 import { useState, createRef, useEffect } from "react";
 
 function Item({ item, deleteItem }) {
@@ -17,8 +18,11 @@ function Item({ item, deleteItem }) {
     });
 
     return (
-        <li>
+        <li className={styles.item + " " + (done ? styles.done : "")}>
             <button
+                className={
+                    styles.actionButton + " " + styles.buyButton
+                }
                 onClick={() => {
                     item.done = !item.done;
                     setDone(item.done);
@@ -33,12 +37,17 @@ function Item({ item, deleteItem }) {
                 />
             </button>
             <input
+                className={styles.nameInput}
+                disabled={done}
                 ref={nameInput}
                 type="text"
                 placeholder="Item name"
                 onChange={handleNameChange}
             />
-            <button onClick={() => deleteItem(item.id)}>
+            <button
+                className={styles.actionButton + " " + styles.delete}
+                onClick={() => deleteItem(item.id)}
+            >
                 <i className="fa-solid fa-xmark" />
             </button>
         </li>

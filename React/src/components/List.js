@@ -1,8 +1,11 @@
 import { useState } from "react";
 import Item from "./Item";
+import styles from "./List.module.css";
 
 function List() {
     const [list, setList] = useState([]);
+
+    // TODO: use localstorage to load and save the list
 
     function addItem() {
         const item = {
@@ -15,7 +18,11 @@ function List() {
     }
 
     function deleteList() {
-        if (window.confirm("Delete?")) {
+        if (
+            window.confirm(
+                "Do you really want to delete the whole list?"
+            )
+        ) {
             setList([]);
         }
     }
@@ -26,14 +33,21 @@ function List() {
 
     return (
         <>
-            <menu>
-                <button onClick={addItem}>Add</button>
+            <menu className={styles.menu}>
+                <button className={styles.button} onClick={addItem}>
+                    <i className="fa-solid fa-plus" />
+                </button>
                 {list.length > 0 && (
-                    <button onClick={deleteList}>Trash</button>
+                    <button
+                        className={styles.button}
+                        onClick={deleteList}
+                    >
+                        <i className="fa-solid fa-trash-can" />
+                    </button>
                 )}
             </menu>
             {list.length > 0 ? (
-                <ul>
+                <ul className={styles.list}>
                     {list.map((item) => (
                         <Item
                             key={item.id}
@@ -43,7 +57,7 @@ function List() {
                     ))}
                 </ul>
             ) : (
-                <p>Add items</p>
+                <p style={{ textAlign: "center" }}>Add items</p>
             )}
         </>
     );
