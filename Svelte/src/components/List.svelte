@@ -52,12 +52,20 @@
 </script>
 
 <menu>
-    <button class="bigButton" on:click={addItem}>
-        <i class="fa-solid fa-plus" />
+    <button
+        class="bigButton"
+        on:click={addItem}
+        aria-label="Add item"
+    >
+        <i aria-hidden="true" class="fa-solid fa-plus" />
     </button>
     {#if list.length > 0}
-        <button class="bigButton" on:click={deleteList}>
-            <i class="fa-solid fa-trash-can" />
+        <button
+            class="bigButton"
+            on:click={deleteList}
+            aria-label="Delete list"
+        >
+            <i aria-hidden="true" class="fa-solid fa-trash-can" />
         </button>
     {/if}
 </menu>

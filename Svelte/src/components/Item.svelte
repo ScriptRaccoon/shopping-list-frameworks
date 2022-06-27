@@ -21,8 +21,10 @@
     <button
         class="actionButton buyButton"
         on:click={() => (item.done = !item.done)}
+        aria-label="Buy item"
     >
         <i
+            aria-hidden="true"
             class={item.done
                 ? "fa-solid fa-check"
                 : "fa-solid fa-basket-shopping"}
@@ -34,10 +36,15 @@
         disabled={item.done}
         type="text"
         placeholder="Item name"
+        aria-label="Item name"
         bind:value={item.name}
     />
-    <button class="actionButton deleteBtn" on:click={deleteItem}>
-        <i class="fa-solid fa-xmark" />
+    <button
+        class="actionButton deleteBtn"
+        on:click={deleteItem}
+        aria-label="Delete item"
+    >
+        <i aria-hidden="true" class="fa-solid fa-xmark" />
     </button>
 </li>
 
