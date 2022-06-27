@@ -66,4 +66,12 @@
     .deleteBtn:where(:not(:focus-visible, :hover)) {
         color: red;
     }
+    .actionButton {
+        color: var(--secondary-color);
+    }
+
+    .actionButton:hover,
+    .actionButton:focus-visible {
+        color: var(--primary-color);
+    }
 </style>

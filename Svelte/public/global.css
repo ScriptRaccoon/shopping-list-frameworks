@@ -28,11 +28,3 @@ button {
     cursor: pointer;
     padding: 5px;
 }
-.actionButton {
-    color: var(--secondary-color);
-}
-
-.actionButton:hover,
-.actionButton:focus-visible {
-    color: var(--primary-color);
-}
