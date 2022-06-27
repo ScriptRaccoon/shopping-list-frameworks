@@ -36,7 +36,7 @@
         placeholder="Item name"
         bind:value={item.name}
     />
-    <button class="actionButton delete" on:click={deleteItem}>
+    <button class="actionButton deleteBtn" on:click={deleteItem}>
         <i class="fa-solid fa-xmark" />
     </button>
 </li>
@@ -63,7 +63,7 @@
     li.done {
         opacity: 0.3;
     }
-    .actionButton.delete:where(:not(:focus-visible, :hover)) {
+    .deleteBtn:where(:not(:focus-visible, :hover)) {
         color: red;
     }
 </style>

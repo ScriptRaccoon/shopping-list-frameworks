@@ -41,7 +41,9 @@ function Item({ item, deleteItem, changeName, toggleDone }) {
                 value={item.name}
             />
             <button
-                className={styles.actionButton + " " + styles.delete}
+                className={
+                    styles.actionButton + " " + styles.deleteBtn
+                }
                 onClick={() => deleteItem(item.id)}
             >
                 <i className="fa-solid fa-xmark" />

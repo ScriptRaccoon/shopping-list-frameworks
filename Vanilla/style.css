@@ -115,6 +115,6 @@ menu button:focus-visible {
     opacity: 0.3;
 }
 
-.item .actionButton.delete:where(:not(:focus-visible, :hover)) {
+.item .deleteBtn:where(:not(:focus-visible, :hover)) {
     color: red !important;
 }

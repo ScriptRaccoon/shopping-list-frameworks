@@ -86,7 +86,7 @@ function createItem(item) {
 
     const deleteButton = document.createElement("button");
     deleteButton.innerHTML = `<i class="fa-solid fa-xmark" />`;
-    deleteButton.classList.add("delete", "actionButton");
+    deleteButton.classList.add("deleteBtn", "actionButton");
 
     itemElement.append(buyButton, nameInput, deleteButton);
     listElement.prepend(itemElement);
