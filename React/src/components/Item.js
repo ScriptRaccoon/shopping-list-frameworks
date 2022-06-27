@@ -1,13 +1,7 @@
 import styles from "./Item.module.css";
-import { useState, createRef, useEffect } from "react";
+import { createRef, useEffect } from "react";
 
-function Item({ item, deleteItem }) {
-    const [done, setDone] = useState(item.done);
-
-    function handleNameChange(e) {
-        item.name = e.target.value;
-    }
-
+function Item({ item, deleteItem, changeName, toggleDone }) {
     const nameInput = createRef();
 
     useEffect(() => {
@@ -18,19 +12,20 @@ function Item({ item, deleteItem }) {
     });
 
     return (
-        <li className={styles.item + " " + (done ? styles.done : "")}>
+        <li
+            className={
+                styles.item + " " + (item.done ? styles.done : "")
+            }
+        >
             <button
                 className={
                     styles.actionButton + " " + styles.buyButton
                 }
-                onClick={() => {
-                    item.done = !item.done;
-                    setDone(item.done);
-                }}
+                onClick={() => toggleDone(item.id)}
             >
                 <i
                     className={
-                        done
+                        item.done
                             ? "fa-solid fa-check"
                             : "fa-solid fa-basket-shopping"
                     }
@@ -38,11 +33,12 @@ function Item({ item, deleteItem }) {
             </button>
             <input
                 className={styles.nameInput}
-                disabled={done}
+                disabled={item.done}
                 ref={nameInput}
                 type="text"
                 placeholder="Item name"
-                onChange={handleNameChange}
+                onChange={(e) => changeName(item.id, e.target.value)}
+                value={item.name}
             />
             <button
                 className={styles.actionButton + " " + styles.delete}

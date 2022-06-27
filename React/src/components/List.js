@@ -1,15 +1,23 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import Item from "./Item";
 import styles from "./List.module.css";
+import { debounce } from "../util.js";
 
 function List() {
-    const [list, setList] = useState([]);
+    const savedItems = localStorage.getItem("list");
+    const [list, setList] = useState(
+        savedItems ? JSON.parse(savedItems) : []
+    );
 
-    // TODO: use localstorage to load and save the list
+    const saveListInLocalStorage = debounce(() => {
+        localStorage.setItem("list", JSON.stringify(list));
+    }, 200);
+
+    useEffect(saveListInLocalStorage);
 
     function addItem() {
         const item = {
-            name: "Bla",
+            name: "",
             done: false,
             id: crypto.randomUUID(),
             new: true,
@@ -29,6 +37,22 @@ function List() {
 
     function deleteItem(id) {
         setList(list.filter((item) => item.id !== id));
+    }
+
+    function toggleDone(id) {
+        setList(
+            list.map((item) =>
+                item.id === id ? { ...item, done: !item.done } : item
+            )
+        );
+    }
+
+    function changeName(id, name) {
+        setList(
+            list.map((item) =>
+                item.id === id ? { ...item, name } : item
+            )
+        );
     }
 
     return (
@@ -53,6 +77,8 @@ function List() {
                             key={item.id}
                             item={item}
                             deleteItem={deleteItem}
+                            toggleDone={toggleDone}
+                            changeName={changeName}
                         />
                     ))}
                 </ul>
