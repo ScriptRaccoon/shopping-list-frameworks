@@ -11,7 +11,6 @@
 
     function focusWhenNew(element) {
         if (item.new) {
-            console.log(item);
             element.focus();
             delete item.new;
         }
