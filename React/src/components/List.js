@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Item from "./Item";
 import styles from "./List.module.css";
 import { debounce } from "../util.js";
@@ -9,11 +9,14 @@ function List() {
         savedItems ? JSON.parse(savedItems) : []
     );
 
-    const saveListInLocalStorage = debounce(() => {
-        localStorage.setItem("list", JSON.stringify(list));
-    }, 200);
+    const saveListInLocalStorage = useCallback(
+        debounce((stuff) => {
+            localStorage.setItem("list", JSON.stringify(stuff));
+        }, 200),
+        []
+    );
 
-    useEffect(saveListInLocalStorage);
+    useEffect(() => saveListInLocalStorage(list), [list]);
 
     function addItem() {
         const item = {
