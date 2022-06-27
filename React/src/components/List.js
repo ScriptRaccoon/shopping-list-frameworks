@@ -9,6 +9,7 @@ function List() {
             name: "Bla",
             done: false,
             id: crypto.randomUUID(),
+            new: true,
         };
         setList([item, ...list]);
     }
@@ -20,7 +21,7 @@ function List() {
     }
 
     function deleteItem(id) {
-        setList(list.filter((item) => item.id != id));
+        setList(list.filter((item) => item.id !== id));
     }
 
     return (

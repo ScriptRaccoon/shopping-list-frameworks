@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, createRef, useEffect } from "react";
 
 function Item({ item, deleteItem }) {
     const [done, setDone] = useState(item.done);
@@ -6,6 +6,15 @@ function Item({ item, deleteItem }) {
     function handleNameChange(e) {
         item.name = e.target.value;
     }
+
+    const nameInput = createRef();
+
+    useEffect(() => {
+        if (item.new) {
+            delete item.new;
+            nameInput.current?.focus();
+        }
+    });
 
     return (
         <li>
@@ -24,6 +33,7 @@ function Item({ item, deleteItem }) {
                 />
             </button>
             <input
+                ref={nameInput}
                 type="text"
                 placeholder="Item name"
                 onChange={handleNameChange}
