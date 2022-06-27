@@ -73,8 +73,8 @@ function createItem(item) {
 
     const buyButton = document.createElement("button");
     buyButton.innerHTML = buyButton.innerHTML = item.done
-        ? `<i class="fa-solid fa-check" />`
-        : `<i class="fa-solid fa-basket-shopping" />`;
+        ? `<i aria-hidden="true" class="fa-solid fa-check" />`
+        : `<i aria-hidden="true" class="fa-solid fa-basket-shopping" />`;
     buyButton.classList.add("buyButton", "actionButton");
     buyButton.setAttribute("aria-label", "Buy item");
 
@@ -87,7 +87,7 @@ function createItem(item) {
     nameInput.setAttribute("aria-label", "Item name");
 
     const deleteButton = document.createElement("button");
-    deleteButton.innerHTML = `<i class="fa-solid fa-xmark" />`;
+    deleteButton.innerHTML = `<i aria-hidden="true" class="fa-solid fa-xmark" />`;
     deleteButton.classList.add("deleteBtn", "actionButton");
     deleteButton.setAttribute("aria-label", "Delete item");
 
@@ -109,8 +109,8 @@ function createItem(item) {
     buyButton.addEventListener("click", () => {
         item.done = !item.done;
         buyButton.innerHTML = item.done
-            ? `<i class="fa-solid fa-check" />`
-            : `<i class="fa-solid fa-basket-shopping" />`;
+            ? `<i aria-hidden="true" class="fa-solid fa-check" />`
+            : `<i aria-hidden="true" class="fa-solid fa-basket-shopping" />`;
         itemElement.classList.toggle("done");
         nameInput.disabled = item.done;
         saveListInLocalStorage();
