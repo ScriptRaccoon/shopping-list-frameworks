@@ -76,6 +76,7 @@ function createItem(item) {
         ? `<i class="fa-solid fa-check" />`
         : `<i class="fa-solid fa-basket-shopping" />`;
     buyButton.classList.add("buyButton", "actionButton");
+    buyButton.setAttribute("aria-label", "Buy item");
 
     if (item.done) itemElement.classList.add("done");
 
@@ -83,10 +84,12 @@ function createItem(item) {
     nameInput.type = "text";
     nameInput.value = item.name;
     nameInput.placeholder = "Item name";
+    nameInput.setAttribute("aria-label", "Item name");
 
     const deleteButton = document.createElement("button");
     deleteButton.innerHTML = `<i class="fa-solid fa-xmark" />`;
     deleteButton.classList.add("deleteBtn", "actionButton");
+    deleteButton.setAttribute("aria-label", "Delete item");
 
     itemElement.append(buyButton, nameInput, deleteButton);
     listElement.prepend(itemElement);
