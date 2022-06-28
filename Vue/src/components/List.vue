@@ -1,12 +1,28 @@
 <script setup>
-    import { ref, computed } from "vue";
+    import { ref, watch, toRaw } from "vue";
     import Item from "./Item.vue";
+    import { debounce } from "../util.js";
 
-    const list = ref([
-        { id: "1", name: "Brot", done: true },
-        { id: "2", name: "Hafermilch", done: false },
-        { id: "3", name: "Druckerpatronen", done: false },
-    ]);
+    const list = ref([]);
+
+    const saveListInLocalStorage = debounce((stuff) => {
+        localStorage.setItem("list", JSON.stringify(stuff));
+    }, 200);
+
+    watch(list, (updatedList) => {
+        saveListInLocalStorage(toRaw(updatedList));
+    },{ deep: true });
+
+    function init() {
+        const savedList = localStorage.getItem("list");
+        if (savedList) {
+            list.value = JSON.parse(savedList);
+        } else {
+            list.value = [];
+        }
+    }
+
+    init();
 
     function deleteItem(id) {
         list.value = list.value.filter((item) => item.id != id);
