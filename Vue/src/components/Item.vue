@@ -1,6 +1,16 @@
 <script setup>
-    defineProps(["item"]);
+    import { onMounted, ref } from "vue";
+    const { item } = defineProps(["item"]);
     defineEmits(["delete"]);
+
+    const nameInput = ref(null);
+
+    onMounted(() => {
+        if (item.new) {
+            nameInput.value?.focus();
+            delete item.new;
+        }
+    });
 </script>
 <template>
     <li :class="{ done: item.done }">
@@ -23,6 +33,7 @@
             placeholder="Item name"
             v-model="item.name"
             aria-label="Item name"
+            ref="nameInput"
             :disabled="item.done"
         />
         <button
