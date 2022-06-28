@@ -40,7 +40,7 @@
             <i aria-hidden="true" class="fa-solid fa-trash-can"></i>
         </button>
     </menu>
-    <ul>
+    <ul v-if="list.length > 0">
         <template v-for="item in list" :key="item.id">
             <li :class="{ done: item.done }">
                 <button
@@ -70,6 +70,7 @@
             </li>
         </template>
     </ul>
+    <p v-else style="text-align: center">Add items</p>
 </template>
 
 <style scoped>
