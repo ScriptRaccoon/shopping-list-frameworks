@@ -1,11 +1,14 @@
 <script setup>
     import "./global.css";
     import Header from "./components/Header.vue";
+    import List from "./components/List.vue";
 </script>
 
 <template>
-    <Header></Header>
-    <main>List goes here</main>
+    <Header> </Header>
+    <main>
+        <List></List>
+    </main>
 </template>
 
 <style>
