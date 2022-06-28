@@ -5,6 +5,10 @@
         { id: "2", name: "Hafermilch", done: false },
         { id: "3", name: "Druckerpatronen", done: false },
     ]);
+
+    function deleteItem(id) {
+        list.value = list.value.filter((item) => item.id != id);
+    }
 </script>
 
 <template>
@@ -18,8 +22,8 @@
                     ></i>
                 </button>
                 <input type="text" :value="item.name" :disabled="item.done" />
-                <button aria-label="Delete item">
-                    <i aria-hidden="true" class="fa-solid fa-xmark" />
+                <button aria-label="Delete item" @click="deleteItem(item.id)">
+                    <i aria-hidden="true" class="fa-solid fa-xmark"></i>
                 </button>
             </li>
         </template>
