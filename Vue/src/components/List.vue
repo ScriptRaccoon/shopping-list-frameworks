@@ -21,7 +21,13 @@
                         class="fa-solid fa-basket-shopping"
                     ></i>
                 </button>
-                <input type="text" :value="item.name" :disabled="item.done" />
+                <input
+                    type="text"
+                    placeholder="Item name"
+                    v-model="item.name"
+                    aria-label="Item name"
+                    :disabled="item.done"
+                />
                 <button aria-label="Delete item" @click="deleteItem(item.id)">
                     <i aria-hidden="true" class="fa-solid fa-xmark"></i>
                 </button>
