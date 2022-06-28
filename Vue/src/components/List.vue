@@ -1,5 +1,7 @@
 <script setup>
     import { ref, computed } from "vue";
+    import Item from "./Item.vue";
+
     const list = ref([
         { id: "1", name: "Brot", done: true },
         { id: "2", name: "Hafermilch", done: false },
@@ -42,36 +44,7 @@
     </menu>
     <ul v-if="list.length > 0">
         <template v-for="item in list" :key="item.id">
-            <li :class="{ done: item.done }">
-                <button
-                    class="actionButton buyButton"
-                    aria-label="Buy item"
-                    @click="item.done = !item.done"
-                >
-                    <i
-                        aria-hidden="true"
-                        :class="
-                            item.done
-                                ? ['fa-solid', 'fa-check']
-                                : ['fa-solid', 'fa-basket-shopping']
-                        "
-                    ></i>
-                </button>
-                <input
-                    type="text"
-                    placeholder="Item name"
-                    v-model="item.name"
-                    aria-label="Item name"
-                    :disabled="item.done"
-                />
-                <button
-                    class="actionButton deleteBtn"
-                    aria-label="Delete item"
-                    @click="deleteItem(item.id)"
-                >
-                    <i aria-hidden="true" class="fa-solid fa-xmark"></i>
-                </button>
-            </li>
+            <Item :item="item" @delete="deleteItem(item.id)"></Item>
         </template>
     </ul>
     <p v-else style="text-align: center">Add items</p>
@@ -91,7 +64,7 @@
         gap: 20px;
         justify-content: center;
     }
-    menu button {
+    button {
         background-color: var(--secondary-color);
         color: white;
         width: 40px;
@@ -99,43 +72,8 @@
         border-radius: 50%;
     }
 
-    menu button:hover,
-    menu button:focus-visible {
+    button:hover,
+    button:focus-visible {
         background-color: var(--primary-color);
-    }
-
-    /* item styles */
-
-    .buyButton {
-        width: 30px;
-    }
-    li {
-        font-size: 20px;
-        display: flex;
-        align-items: center;
-        gap: 8px;
-        margin: 5px 0px;
-    }
-    input[type="text"] {
-        flex: 1;
-        padding: 10px;
-        border-radius: 6px;
-    }
-    input[type="text"]:focus {
-        background-color: #eee;
-    }
-    li.done {
-        opacity: 0.3;
-    }
-    .deleteBtn:where(:not(:focus-visible, :hover)) {
-        color: red;
-    }
-    .actionButton {
-        color: var(--secondary-color);
-    }
-
-    .actionButton:hover,
-    .actionButton:focus-visible {
-        color: var(--primary-color);
     }
 </style>
