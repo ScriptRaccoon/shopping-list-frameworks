@@ -1,5 +1,5 @@
 <script setup>
-    import { ref } from "vue";
+    import { ref, computed } from "vue";
     const list = ref([
         { id: "1", name: "Brot", done: true },
         { id: "2", name: "Hafermilch", done: false },
@@ -25,6 +25,10 @@
             list.value = [];
         }
     }
+
+    const className = computed(() =>
+        false ? "fa-solid fa-basket-shopping" : "fa-solid fa-check"
+    );
 </script>
 
 <template>
@@ -50,7 +54,11 @@
                 >
                     <i
                         aria-hidden="true"
-                        class="fa-solid fa-basket-shopping"
+                        :class="
+                            item.done
+                                ? ['fa-solid', 'fa-check']
+                                : ['fa-solid', 'fa-basket-shopping']
+                        "
                     ></i>
                 </button>
                 <input
