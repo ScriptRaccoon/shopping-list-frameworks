@@ -25,10 +25,6 @@
             list.value = [];
         }
     }
-
-    const className = computed(() =>
-        false ? "fa-solid fa-basket-shopping" : "fa-solid fa-check"
-    );
 </script>
 
 <template>
