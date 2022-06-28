@@ -57,7 +57,7 @@
     li.done {
         opacity: 0.3;
     }
-    .deleteBtn:where(:not(:focus-visible, :hover)) {
+    .deleteBtn :where(:not(:focus-visible, :hover)) {
         color: red;
     }
     .actionButton {
