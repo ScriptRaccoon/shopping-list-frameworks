@@ -1,50 +1,49 @@
 import styles from "./List.module.css";
-import { For, Show } from "solid-js";
+import { For, Show, createSignal } from "solid-js";
 import Item from "./Item";
 
 function List() {
+    const [list, setList] = createSignal([]);
+
     function addItem() {
-        // TODO:
-        console.log("add item");
+        const item = {
+            name: "",
+            done: false,
+            id: crypto.randomUUID(),
+            new: true,
+        };
+        setList([item, ...list()]);
     }
 
     function deleteList() {
-        // TODO:
-        console.log("delete list");
+        if (
+            window.confirm(
+                "Do you really want to delete the whole list?"
+            )
+        ) {
+            setList([]);
+        }
     }
 
-    function toggleDone() {
-        // TODO:
-        console.log("toggle done");
+    function toggleDone(id) {
+        setList(
+            list().map((item) =>
+                item.id === id ? { ...item, done: !item.done } : item
+            )
+        );
     }
 
-    function changeName() {
-        // TODO:
-        console.log("change name");
+    function changeName(id, name) {
+        setList(
+            list().map((item) =>
+                item.id === id ? { ...item, name } : item
+            )
+        );
     }
 
-    function deleteItem() {
-        // TODO:
-        console.log("delete item");
+    function deleteItem(id) {
+        setList(list().filter((item) => item.id !== id));
     }
-
-    let list = [
-        {
-            id: 1,
-            name: "A",
-            done: false,
-        },
-        {
-            id: 2,
-            name: "B",
-            done: true,
-        },
-        {
-            id: 3,
-            name: "C",
-            done: false,
-        },
-    ];
 
     return (
         <>
@@ -56,7 +55,7 @@ function List() {
                 >
                     <i aria-hidden="true" class="fa-solid fa-plus" />
                 </button>
-                <Show when={list.length > 0}>
+                <Show when={list().length > 0}>
                     <button
                         aria-label="Delete list"
                         class={styles.button}
@@ -71,7 +70,7 @@ function List() {
             </menu>
             <ul>
                 <For
-                    each={list}
+                    each={list()}
                     fallback={
                         <p style="text-align: center;">Add items</p>
                     }
