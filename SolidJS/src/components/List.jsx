@@ -1,9 +1,14 @@
 import styles from "./List.module.css";
-import { For, Show, createSignal } from "solid-js";
+import { For, Show, createSignal, createEffect } from "solid-js";
 import Item from "./Item";
 
 function List() {
     const [list, setList] = createSignal([]);
+
+    createEffect(() => {
+        console.log("changed the list");
+        console.log(list());
+    });
 
     function addItem() {
         const item = {
