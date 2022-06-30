@@ -1,11 +1,14 @@
-// import logo from './logo.svg';
-// import styles from './App.module.css';
+import List from "./components/List"
+import Header from "./components/Header"
 
 function App() {
   return (
-   <p>
-      Hi mom!
-   </p>
+    <>
+      <Header />
+      <main>
+        <List></List>
+      </main>
+   </>
   );
 }
 

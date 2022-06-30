@@ -1,0 +1,38 @@
+.buyButton {
+    width: 30px;
+}
+
+.item {
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 5px 0px;
+}
+
+.nameInput {
+    flex: 1;
+    padding: 10px;
+    border-radius: 6px;
+}
+
+.nameInput:focus {
+    background-color: #eee;
+}
+
+.done {
+    opacity: 0.3;
+}
+
+.actionButton {
+    color: var(--secondary-color);
+}
+
+.actionButton:hover,
+.actionButton:focus-visible {
+    color: var(--primary-color);
+}
+
+.deleteBtn:where(:not(:focus-visible, :hover)) {
+    color: red;
+}
