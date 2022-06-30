@@ -4,15 +4,24 @@
 
     let list;
 
+    const saveListInLocalStorage = debounce(() => {
+        localStorage.setItem("list", JSON.stringify(list));
+    }, 200);
+
+    $: if (list) {
+        saveListInLocalStorage();
+    }
+
     function init() {
         const savedList = localStorage.getItem("list");
         if (savedList) {
             list = JSON.parse(savedList);
         } else {
             list = [];
-            saveListInLocalStorage();
         }
     }
+
+    init();
 
     function addItem() {
         const item = {
@@ -22,17 +31,11 @@
             new: true,
         };
         list = [item, ...list];
-        saveListInLocalStorage();
     }
 
     function deleteItem(id) {
         list = list.filter((item) => item.id != id);
-        saveListInLocalStorage();
     }
-
-    const saveListInLocalStorage = debounce(() => {
-        localStorage.setItem("list", JSON.stringify(list));
-    }, 200);
 
     function deleteList() {
         if (
@@ -41,13 +44,8 @@
             )
         ) {
             list = [];
-            saveListInLocalStorage();
         }
     }
-
-    $: if (list) saveListInLocalStorage();
-
-    init();
 </script>
 
 <menu>
