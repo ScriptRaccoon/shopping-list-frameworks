@@ -13,6 +13,21 @@ function List() {
         console.log("delete list");
     }
 
+    function toggleDone() {
+        // TODO:
+        console.log("toggle done");
+    }
+
+    function changeName() {
+        // TODO:
+        console.log("change name");
+    }
+
+    function deleteItem() {
+        // TODO:
+        console.log("delete item");
+    }
+
     let list = [
         {
             id: 1,
@@ -61,7 +76,14 @@ function List() {
                         <p style="text-align: center;">Add items</p>
                     }
                 >
-                    {(item) => <Item item={item}></Item>}
+                    {(item) => (
+                        <Item
+                            item={item}
+                            toggleDone={toggleDone}
+                            changeName={changeName}
+                            deleteItem={deleteItem}
+                        ></Item>
+                    )}
                 </For>
             </ul>
         </>
