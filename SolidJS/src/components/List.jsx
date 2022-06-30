@@ -1,8 +1,19 @@
-import "./List.module.css";
-import { For } from "solid-js";
+import styles from "./List.module.css";
+import { For, Show } from "solid-js";
+import Item from "./Item";
 
 function List() {
-    const list = [
+    function addItem() {
+        // TODO:
+        console.log("add item");
+    }
+
+    function deleteList() {
+        // TODO:
+        console.log("delete list");
+    }
+
+    let list = [
         {
             id: 1,
             name: "A",
@@ -19,13 +30,41 @@ function List() {
             done: false,
         },
     ];
+
     return (
-        <For
-            each={list}
-            fallback={<p style="text-align: center;">Add items</p>}
-        >
-            {(item) => <div>{item.name}</div>}
-        </For>
+        <>
+            <menu className={styles.menu}>
+                <button
+                    aria-label="Add item"
+                    class={styles.button}
+                    onClick={addItem}
+                >
+                    <i aria-hidden="true" class="fa-solid fa-plus" />
+                </button>
+                <Show when={list.length > 0}>
+                    <button
+                        aria-label="Delete list"
+                        class={styles.button}
+                        onClick={deleteList}
+                    >
+                        <i
+                            aria-hidden="true"
+                            className="fa-solid fa-trash-can"
+                        />
+                    </button>
+                </Show>
+            </menu>
+            <ul>
+                <For
+                    each={list}
+                    fallback={
+                        <p style="text-align: center;">Add items</p>
+                    }
+                >
+                    {(item) => <Item item={item}></Item>}
+                </For>
+            </ul>
+        </>
     );
 }
 

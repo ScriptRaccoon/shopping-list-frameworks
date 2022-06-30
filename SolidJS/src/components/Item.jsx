@@ -1,9 +1,7 @@
 import "./Item.module.css";
 
-function Item() {
-    return <>
-        I am an item
-    </>
+function Item({ item }) {
+    return <li>{item.name}</li>;
 }
 
 export default Item;
