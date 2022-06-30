@@ -48,7 +48,7 @@ Demo: https://shopping-list-made-with-react.netlify.app
 
 Size: 
 - HTML: 896 B
-- JavaScript: 358 KB
+- JavaScript: 142 KB
 - CSS: 1.32 KB
 
 ## Features of the App
