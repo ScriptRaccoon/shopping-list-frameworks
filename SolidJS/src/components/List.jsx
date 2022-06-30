@@ -1,13 +1,20 @@
 import styles from "./List.module.css";
 import { For, Show, createSignal, createEffect } from "solid-js";
 import Item from "./Item";
+import { debounce } from "../util.js";
 
 function List() {
-    const [list, setList] = createSignal([]);
+    const savedItems = localStorage.getItem("list");
+    const [list, setList] = createSignal(
+        savedItems ? JSON.parse(savedItems) : []
+    );
+
+    const saveListInLocalStorage = debounce((stuff) => {
+        localStorage.setItem("list", JSON.stringify(stuff));
+    }, 200);
 
     createEffect(() => {
-        console.log("changed the list");
-        console.log(list());
+        saveListInLocalStorage(list());
     });
 
     function addItem() {
