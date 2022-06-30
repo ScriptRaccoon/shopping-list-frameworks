@@ -1,9 +1,15 @@
 import styles from "./Item.module.css";
+import { createEffect } from "solid-js";
 
 function Item({ item, toggleDone, changeName, deleteItem }) {
     let nameInput;
 
-    // TODO: focus on new element
+    createEffect(() => {
+        if (item.new) {
+            delete item.new;
+            nameInput.focus();
+        }
+    });
 
     return (
         <li
@@ -24,9 +30,9 @@ function Item({ item, toggleDone, changeName, deleteItem }) {
                 />
             </button>
             <input
+                ref={nameInput}
                 class={styles.nameInput}
                 disabled={item.done}
-                ref={nameInput}
                 type="text"
                 placeholder="Item name"
                 aria-label="Item name"
