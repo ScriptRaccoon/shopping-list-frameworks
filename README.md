@@ -6,10 +6,14 @@ The same shopping list SPA coded with several JavaScript frameworks in order to 
 
 Demo: https://shopping-list-made-with-vanilla-js.netlify.app
 
-Size (bundled with Vite):
-- HTML: 1.13 KB
+Strictly speaking, this is not a framework, but of course we need this as a reference here. To get a proper comparison to the other frameworks, which all use build tools, I chose to use Vite here to build the app.
+
+Size:
+- HTML: 1.22 KB
 - JavaScript: 2.70 KB
 - CSS: 1.16 KB
+
+As expected, Vanilla JavaScript has the smallest bundle size. The other frameworks here are sorted by their bundle size. Svelte is really good, React is really bad.
 
 ## Svelte
 
@@ -47,7 +51,7 @@ Size:
 - JavaScript: 358 KB
 - CSS: 1.32 KB
 
-## Features
+## Features of the App
  
 In each case the app has the following features:
 
