@@ -25,8 +25,7 @@
         saveListInLocalStorage();
     }
 
-    function deleteItem(e) {
-        const id = e.detail;
+    function deleteItem(id) {
         list = list.filter((item) => item.id != id);
         saveListInLocalStorage();
     }
@@ -75,7 +74,7 @@
         {#each list as item (item.id)}
             <Item
                 bind:item
-                on:delete={deleteItem}
+                on:delete={() => deleteItem(item.id)}
                 on:save={saveListInLocalStorage}
             />
         {/each}

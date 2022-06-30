@@ -6,7 +6,7 @@
     export let item;
 
     function deleteItem() {
-        dispatch("delete", item.id);
+        dispatch("delete");
     }
 
     function focusWhenNew(element) {
