@@ -1,3 +1,5 @@
+import "./style.css";
+
 import { debounce } from "./utils.js";
 
 const listElement = document.getElementById("listElement");

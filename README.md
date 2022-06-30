@@ -6,10 +6,10 @@ The same shopping list SPA coded with several JavaScript frameworks in order to 
 
 Demo: https://shopping-list-made-with-vanilla-js.netlify.app
 
-Size:
-- HTML: 1.37 KB
-- JavaScript (not minified): 3.86 KB
-- CSS (not minified): 1.76 KB
+Size (bundled with Vite):
+- HTML: 1.13 KB
+- JavaScript: 2.70 KB
+- CSS: 1.16 KB
 
 ## Svelte
 
