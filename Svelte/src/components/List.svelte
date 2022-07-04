@@ -49,19 +49,11 @@
 </script>
 
 <menu>
-    <button
-        class="bigButton"
-        on:click={addItem}
-        aria-label="Add item"
-    >
+    <button on:click={addItem} aria-label="Add item">
         <i aria-hidden="true" class="fa-solid fa-plus" />
     </button>
     {#if list.length > 0}
-        <button
-            class="bigButton"
-            on:click={deleteList}
-            aria-label="Delete list"
-        >
+        <button on:click={deleteList} aria-label="Delete list">
             <i aria-hidden="true" class="fa-solid fa-trash-can" />
         </button>
     {/if}

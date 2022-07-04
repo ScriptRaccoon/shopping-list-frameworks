@@ -19,7 +19,7 @@
 
 <li class:done={item.done}>
     <button
-        class="actionButton buyButton"
+        class="buyButton"
         on:click={() => (item.done = !item.done)}
         aria-label="Buy item"
     >
@@ -40,7 +40,7 @@
         bind:value={item.name}
     />
     <button
-        class="actionButton deleteBtn"
+        class="deleteBtn"
         on:click={deleteItem}
         aria-label="Delete item"
     >
@@ -49,9 +49,6 @@
 </li>
 
 <style>
-    .buyButton {
-        width: 30px;
-    }
     li {
         font-size: 20px;
         display: flex;
@@ -59,6 +56,18 @@
         gap: 8px;
         margin: 5px 0px;
     }
+    button {
+        color: var(--secondary-color);
+    }
+
+    button:hover,
+    button:focus-visible {
+        color: var(--primary-color);
+    }
+    .buyButton {
+        width: 30px;
+    }
+
     input[type="text"] {
         flex: 1;
         padding: 10px;
@@ -72,13 +81,5 @@
     }
     .deleteBtn:where(:not(:focus-visible, :hover)) {
         color: red;
-    }
-    .actionButton {
-        color: var(--secondary-color);
-    }
-
-    .actionButton:hover,
-    .actionButton:focus-visible {
-        color: var(--primary-color);
     }
 </style>
