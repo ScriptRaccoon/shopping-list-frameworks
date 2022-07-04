@@ -4,22 +4,26 @@ The very same shopping list SPA coded with several JavaScript frameworks in orde
 
 ![Screenshot of App](screenshot-of-app.png)
 
+Vanilla JavaScript is also included. Strictly speaking, this is not a framework, but of course we need this as a reference here. As expected, Vanilla JavaScript has the smallest bundle size, but is a bit clumsy to write. The other frameworks here are sorted by their bundle size. The upshot is: **Svelte is really good, React is really bad.**
+
 ## Vanilla JavaScript
 
 Demo: https://shopping-list-made-with-vanilla-js.netlify.app
 
-Strictly speaking, this is not a framework, but of course we need this as a reference here. To get a proper comparison to the other frameworks, which all use build tools, I chose to use Vite here to build the app.
+Docs: https://developer.mozilla.org/docs/Web/JavaScript
+
+For a proper comparison to the other frameworks, which all use build tools, I chose to use Vite here to build the app.
 
 Size:
 - HTML: 1.22 KB
 - JavaScript: 2.70 KB
 - CSS: 1.16 KB
 
-As expected, Vanilla JavaScript has the smallest bundle size. The other frameworks here are sorted by their bundle size. Svelte is really good, React is really bad.
-
 ## Svelte
 
 Demo: https://shopping-list-made-with-svelte.netlify.app
+
+Docs: https://svelte.dev/docs
 
 Size:
 - HTML: 681 B
@@ -30,6 +34,8 @@ Size:
 
 Demo: https://shopping-list-made-with-solid.netlify.app
 
+Docs: https://www.solidjs.com/docs/latest
+
 Size:
 - HTML: 0.84 KB
 - JavaScript: 12.98 KB
@@ -38,6 +44,8 @@ Size:
 ## Lit
 
 Demo: https://shopping-list-made-with-lit.netlify.app
+
+Docs: https://lit.dev/docs/
 
 Here I used Vite with the Vanilla preset and added the lit package afterwards. The Lit preset seems to only build the component.
 
@@ -52,6 +60,8 @@ The CSS-In-JS doesn't look minified in the output, so one can get the size even 
 
 Demo: https://shopping-list-made-with-vue.netlify.app
 
+Docs: https://vuejs.org/guide/
+
 Size:
 - HTML: 694 B
 - JavaScript: 55.43 KB
@@ -60,6 +70,8 @@ Size:
 ## React
 
 Demo: https://shopping-list-made-with-react.netlify.app
+
+Docs: https://reactjs.org/docs/getting-started.html
 
 Size: 
 - HTML: 896 B
