@@ -151,9 +151,7 @@ export class List extends LitElement {
             () => html`<p style="text-align:center">Add items</p>`
         );
 
-        return html`${menuTemplate}${listTemplate}
-            <!-- debugging: -->
-            <br /><br /><code>${JSON.stringify(this._items)}</code>`;
+        return html`${menuTemplate} ${listTemplate}`;
     }
 }
 customElements.define("shopping-list", List);
