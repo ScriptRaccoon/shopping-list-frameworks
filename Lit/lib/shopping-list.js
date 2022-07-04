@@ -3,6 +3,7 @@ import { repeat } from "lit/directives/repeat.js";
 import { when } from "lit/directives/when.js";
 import "./shopping-item.js";
 import cssReset from "./reset-css.js";
+import { debounce } from "./util.js";
 
 export class List extends LitElement {
     static properties = {
@@ -47,14 +48,13 @@ export class List extends LitElement {
         super();
         const savedItems = localStorage.getItem("list");
         this._items = savedItems ? JSON.parse(savedItems) : [];
+        this.saveToLocalStorage = debounce(() => {
+            localStorage.setItem("list", JSON.stringify(this._items));
+        }, 200);
     }
 
     deleteItem(id) {
         this._items = this._items.filter((item) => item.id != id);
-    }
-
-    saveToLocalStorage() {
-        localStorage.setItem("list", JSON.stringify(this._items));
     }
 
     addItem() {
@@ -74,7 +74,7 @@ export class List extends LitElement {
         this.requestUpdate();
     }
 
-    handleNew(item) {
+    handleNewItem(item) {
         delete item.new;
         this.requestUpdate();
     }
@@ -141,7 +141,7 @@ export class List extends LitElement {
                             name=${item.name}
                             ?done=${item.done}
                             ?new=${item.new}
-                            @new=${() => this.handleNew(item)}
+                            @new=${() => this.handleNewItem(item)}
                             @delete=${() => this.deleteItem(item)}
                             @itemUpdated=${(e) =>
                                 this.handleItemUpdate(e, item)}
