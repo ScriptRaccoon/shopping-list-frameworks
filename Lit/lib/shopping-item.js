@@ -66,11 +66,17 @@ export class Item extends LitElement {
         this.new = false;
     }
 
+    updated() {
+        this.dispatchEvent(
+            new CustomEvent("itemUpdated", {
+                detail: { name: this.name, done: this.done },
+            })
+        );
+    }
+
     firstUpdated() {
-        this.inputNode = this.renderRoot.querySelector("input");
         if (this.new) {
-            console.log("found new");
-            this.inputNode?.focus();
+            this.renderRoot.querySelector("input")?.focus();
             this.dispatchEvent(new CustomEvent("new"));
         }
     }
@@ -79,30 +85,16 @@ export class Item extends LitElement {
         this.dispatchEvent(new CustomEvent("delete"));
     }
 
-    changeName(e) {
-        this.dispatchEvent(
-            new CustomEvent("changeName", {
-                detail: e.target.value,
-            })
-        );
-    }
-
-    toggleDone() {
-        this.done = !this.done;
-        this.dispatchEvent(new CustomEvent("toggleDone"));
-    }
-
     render() {
         return html`
             <li class=${this.done ? "done" : ""}>
                 <button
                     class="buyButton"
-                    @click=${this.toggleDone}
+                    @click=${() => (this.done = !this.done)}
                     aria-label="Buy item"
                 >
                     ${when(
                         this.done,
-
                         () => html`
                             <svg
                                 xmlns="http://www.w3.org/2000/svg"
@@ -129,7 +121,7 @@ export class Item extends LitElement {
                 <input
                     type="text"
                     value=${this.name}
-                    @input=${this.changeName}
+                    @input=${(e) => (this.name = e.target.value)}
                     placeholder="Item name"
                     aria-label="Item name"
                     ?disabled=${this.done}

@@ -73,16 +73,6 @@ export class List extends LitElement {
         this.requestUpdate();
     }
 
-    changeName(item, name) {
-        item.name = name;
-        this.requestUpdate();
-    }
-
-    toggleDone(item) {
-        item.done = !item.done;
-        this.requestUpdate();
-    }
-
     handleNew(item) {
         delete item.new;
         this.requestUpdate();
@@ -96,6 +86,12 @@ export class List extends LitElement {
         ) {
             this._items = [];
         }
+    }
+
+    handleItemUpdate(e, item) {
+        item.name = e.detail.name;
+        item.done = e.detail.done;
+        this.requestUpdate();
     }
 
     render() {
@@ -140,11 +136,10 @@ export class List extends LitElement {
                             name=${item.name}
                             ?done=${item.done}
                             ?new=${item.new}
-                            @delete=${() => this.deleteItem(item)}
-                            @changeName=${(e) =>
-                                this.changeName(item, e.detail)}
-                            @toggleDone=${() => this.toggleDone(item)}
                             @new=${() => this.handleNew(item)}
+                            @delete=${() => this.deleteItem(item)}
+                            @itemUpdated=${(e) =>
+                                this.handleItemUpdate(e, item)}
                         ></shopping-item>`
                 )}
             </ul>`,
