@@ -45,11 +45,8 @@ export class List extends LitElement {
 
     constructor() {
         super();
-        this._items = [
-            { id: 1, name: "Soda", done: false },
-            { id: 2, name: "Bread", done: false },
-            { id: 3, name: "Garlic", done: true },
-        ];
+        const savedItems = localStorage.getItem("list");
+        this._items = savedItems ? JSON.parse(savedItems) : [];
     }
 
     deleteItem(id) {
