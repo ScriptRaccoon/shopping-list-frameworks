@@ -46,9 +46,9 @@ export class List extends LitElement {
     constructor() {
         super();
         this._items = [
-            { id: 1, name: "Soda", done: false, new: true },
-            { id: 2, name: "Bread", done: false, new: false },
-            { id: 3, name: "Garlic", done: true, new: false },
+            { id: 1, name: "Soda", done: false },
+            { id: 2, name: "Bread", done: false },
+            { id: 3, name: "Garlic", done: true },
         ];
     }
 
@@ -66,8 +66,26 @@ export class List extends LitElement {
         this._items = [newItem, ...this._items];
     }
 
-    deleteItem(id) {
-        this._items = this._items.filter((item) => item.id != id);
+    deleteItem(item) {
+        this._items = this._items.filter(
+            (stuff) => stuff.id != item.id
+        );
+        this.requestUpdate();
+    }
+
+    changeName(item, name) {
+        item.name = name;
+        this.requestUpdate();
+    }
+
+    toggleDone(item) {
+        item.done = !item.done;
+        this.requestUpdate();
+    }
+
+    handleNew(item) {
+        delete item.new;
+        this.requestUpdate();
     }
 
     deleteList() {
@@ -122,17 +140,20 @@ export class List extends LitElement {
                             name=${item.name}
                             ?done=${item.done}
                             ?new=${item.new}
-                            @delete=${() => this.deleteItem(item.id)}
-                            >Test</shopping-item
-                        >`
+                            @delete=${() => this.deleteItem(item)}
+                            @changeName=${(e) =>
+                                this.changeName(item, e.detail)}
+                            @toggleDone=${() => this.toggleDone(item)}
+                            @new=${() => this.handleNew(item)}
+                        ></shopping-item>`
                 )}
             </ul>`,
             () => html`<p style="text-align:center">Add items</p>`
         );
 
-        return html`${menuTemplate}${listTemplate}<br /><br /><code
-                >${JSON.stringify(this._items)}</code
-            >`;
+        return html`${menuTemplate}${listTemplate}
+            <!-- debugging: -->
+            <br /><br /><code>${JSON.stringify(this._items)}</code>`;
     }
 }
 customElements.define("shopping-list", List);

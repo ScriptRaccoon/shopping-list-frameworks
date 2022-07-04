@@ -69,13 +69,27 @@ export class Item extends LitElement {
     firstUpdated() {
         this.inputNode = this.renderRoot.querySelector("input");
         if (this.new) {
+            console.log("found new");
             this.inputNode?.focus();
-            this.new = false;
+            this.dispatchEvent(new CustomEvent("new"));
         }
     }
 
     deleteItem() {
-        this.dispatchEvent(new Event("delete"));
+        this.dispatchEvent(new CustomEvent("delete"));
+    }
+
+    changeName(e) {
+        this.dispatchEvent(
+            new CustomEvent("changeName", {
+                detail: e.target.value,
+            })
+        );
+    }
+
+    toggleDone() {
+        this.done = !this.done;
+        this.dispatchEvent(new CustomEvent("toggleDone"));
     }
 
     render() {
@@ -83,7 +97,7 @@ export class Item extends LitElement {
             <li class=${this.done ? "done" : ""}>
                 <button
                     class="buyButton"
-                    @click=${() => (this.done = !this.done)}
+                    @click=${this.toggleDone}
                     aria-label="Buy item"
                 >
                     ${when(
@@ -115,9 +129,7 @@ export class Item extends LitElement {
                 <input
                     type="text"
                     value=${this.name}
-                    @input=${(e) => {
-                        this.name = e.target.value;
-                    }}
+                    @input=${this.changeName}
                     placeholder="Item name"
                     aria-label="Item name"
                     ?disabled=${this.done}
