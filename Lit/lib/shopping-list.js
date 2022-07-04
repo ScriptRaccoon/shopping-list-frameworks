@@ -53,6 +53,10 @@ export class List extends LitElement {
         this._items = this._items.filter((item) => item.id != id);
     }
 
+    saveToLocalStorage() {
+        localStorage.setItem("list", JSON.stringify(this._items));
+    }
+
     addItem() {
         const newItem = {
             id: crypto.randomUUID(),
@@ -89,6 +93,10 @@ export class List extends LitElement {
         item.name = e.detail.name;
         item.done = e.detail.done;
         this.requestUpdate();
+    }
+
+    updated() {
+        this.saveToLocalStorage();
     }
 
     render() {
