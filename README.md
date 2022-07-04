@@ -12,9 +12,7 @@ Demo: https://shopping-list-made-with-vanilla-js.netlify.app
 
 Docs: https://developer.mozilla.org/docs/Web/JavaScript
 
-For a proper comparison to the other frameworks, which all use build tools, I chose to use Vite here to build the app.
-
-Size:
+Size (built with Vite):
 - HTML: 1.22 KB
 - JavaScript: 2.70 KB
 - CSS: 1.16 KB
@@ -25,7 +23,7 @@ Demo: https://shopping-list-made-with-svelte.netlify.app
 
 Docs: https://svelte.dev/docs
 
-Size:
+Size (built with Rollup):
 - HTML: 681 B
 - JavaScript: 9.16 KB
 - CSS: 1.05 KB
@@ -36,7 +34,7 @@ Demo: https://shopping-list-made-with-solid.netlify.app
 
 Docs: https://www.solidjs.com/docs/latest
 
-Size:
+Size (built with Vite):
 - HTML: 0.84 KB
 - JavaScript: 12.98 KB
 - CSS: 1.25 KB
@@ -47,9 +45,7 @@ Demo: https://shopping-list-made-with-lit.netlify.app
 
 Docs: https://lit.dev/docs/
 
-Here I used Vite with the Vanilla preset and added the lit package afterwards. The Lit preset seems to only build the component.
-
-Size:
+Size (built with Vite):
 - HTML: 2.59 KB
 - JavaScript: 29.7 KB
 - CSS: 0 KB (it's included in JS)
@@ -62,7 +58,7 @@ Demo: https://shopping-list-made-with-vue.netlify.app
 
 Docs: https://vuejs.org/guide/
 
-Size:
+Size (built with Vite):
 - HTML: 694 B
 - JavaScript: 55.43 KB
 - CSS: 1.40 KB
@@ -73,7 +69,7 @@ Demo: https://shopping-list-made-with-react.netlify.app
 
 Docs: https://reactjs.org/docs/getting-started.html
 
-Size: 
+Size (built with create-react-app): 
 - HTML: 896 B
 - JavaScript: 142 KB
 - CSS: 1.32 KB
