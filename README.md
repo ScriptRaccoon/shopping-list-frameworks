@@ -46,7 +46,7 @@ Demo: https://shopping-list-made-with-lit.netlify.app
 Docs: https://lit.dev/docs/
 
 Size (built with Vite):
-- HTML: 2.59 KB
+- HTML: 410 B
 - JavaScript: 29.7 KB
 - CSS: 0 KB (it's included in JS)
 
