@@ -1,6 +1,8 @@
 # Shopping List made with several JS frameworks
 
-The same shopping list SPA coded with several JavaScript frameworks in order to compare them with respect to developer experience and bundle size. The code can be found in the respective subfolders.
+The very same shopping list SPA coded with several JavaScript frameworks in order to compare them with respect to developer experience and bundle size. The code can be found in the respective subfolders.
+
+![Screenshot of App](screenshot-of-app.png)
 
 ## Vanilla JavaScript
 
@@ -32,6 +34,12 @@ Size:
 - HTML: 0.84 KB
 - JavaScript: 12.98 KB
 - CSS: 1.25 KB
+
+# Lit
+
+... in progress ...
+
+Here I used Vite with the Vanilla preset and added the lit package afterwards. The Lit preset seems to only build the component.
 
 ## Vue
 
