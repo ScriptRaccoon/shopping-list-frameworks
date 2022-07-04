@@ -35,11 +35,18 @@ Size:
 - JavaScript: 12.98 KB
 - CSS: 1.25 KB
 
-# Lit
+## Lit
 
-... in progress ...
+Demo: https://shopping-list-made-with-lit.netlify.app
 
 Here I used Vite with the Vanilla preset and added the lit package afterwards. The Lit preset seems to only build the component.
+
+Size:
+- HTML: 2.59 KB
+- JavaScript: 29.7 KB
+- CSS: 0 KB (it's included in JS)
+
+The CSS-In-JS doesn't look minified in the output, so one can get the size even smaller here.
 
 ## Vue
 
