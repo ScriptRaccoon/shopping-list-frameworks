@@ -4,9 +4,6 @@ import "./shopping-list.js";
 import cssReset from "./reset-css.js";
 
 export class ShoppingListApp extends LitElement {
-    static properties = {
-        val: { state: true },
-    };
     static styles = [
         cssReset,
         css`
@@ -24,10 +21,7 @@ export class ShoppingListApp extends LitElement {
             }
         `,
     ];
-    constructor() {
-        super();
-        this.val = "test";
-    }
+
     render() {
         return html`
             <shopping-header></shopping-header>
