@@ -1,3 +1,4 @@
+import "./style.css";
 import { debounce } from "./util.js";
 import Alpine from "alpinejs";
 
