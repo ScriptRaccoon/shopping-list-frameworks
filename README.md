@@ -1,12 +1,12 @@
-# Shopping List made with several JS frameworks
+# Comparison of JavaScript frameworks
 
 The very same shopping list SPA coded with several JavaScript frameworks in order to compare them with respect to developer experience and bundle size. The code can be found in the respective subfolders.
 
 ![Screenshot of App](screenshot-of-app.png)
 
-Vanilla JavaScript is also included. Strictly speaking, this is not a framework, but of course we need this as a reference here. As expected, Vanilla JavaScript has the smallest bundle size, but is a bit clumsy to write. The other frameworks here are sorted by their bundle size. The upshot is: **Svelte is really good, React is really bad.**
+Vanilla JavaScript is also included. Strictly speaking, this is not a framework, but of course we need this as a reference here. As expected, Vanilla JavaScript has the smallest bundle size, but is a bit clumsy to write. The other frameworks here are sorted by their bundle size (not gzipped). The upshot is: **Svelte is really good, React is really bad.**
 
-This project is partly inspired by Fireship's [Comparison of 10 JavaScript frameworks](https://github.com/fireship-io/10-javascript-frameworks).
+This project is partly inspired by Fireship's [Comparison of 10 JavaScript frameworks](https://github.com/fireship-io/10-javascript-frameworks), where a more basic todo app with just one component has been used for comparison.
  
 ## Vanilla JavaScript
 
