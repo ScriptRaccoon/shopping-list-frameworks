@@ -65,6 +65,8 @@ Size (built with Vite):
 - JavaScript: 37.82 KB
 - CSS: 1.16 KB
 
+Alpine does not support file-based components out of the box. Therefore this is just one file here, and it's not an entirely fair comparison, since just having one component here would decrease the size with the other frameworks.
+
 ## Vue
 
 Demo: https://shopping-list-made-with-vue.netlify.app
@@ -91,7 +93,7 @@ Size (built with create-react-app):
  
 In each case the app has the following features:
 
-1. component structure: App -> (Header, List -> Item)
+1. component structure: App -> (Header, List -> Item) - except for Alpine
 2. button to add an item
 3. focus on the input field of the new item
 4. ability to change name of item
