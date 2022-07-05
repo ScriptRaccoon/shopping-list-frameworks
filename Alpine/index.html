@@ -17,14 +17,13 @@
   <header>
     <h1>Shopping List</h1>
   </header>
-  <main x-data="{  list: JSON.parse(localStorage.getItem('list') ?? '[]') }">
+  <main x-data="list">
     <menu>
-      <button class="bigButton" id="addButton" aria-label="Add Item" @click="list = [newItem(), ...list]">
+      <button class="bigButton" id="addButton" aria-label="Add Item" @click="addItem">
         <i aria-hidden="true" class="fa-solid fa-plus"></i>
       </button>
       <template x-if="list.length > 0">
-        <button class="bigButton" id="trashButton" aria-label="Delete list"
-          @click="if (window.confirm('Do you really want to delete the whole list?')) list=[]; ">
+        <button class="bigButton" id="trashButton" aria-label="Delete list" @click="deleteList">
           <i aria-hidden=" true" class="fa-solid fa-trash-can"></i>
         </button>
       </template>
