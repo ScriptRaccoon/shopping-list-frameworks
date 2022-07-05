@@ -1,0 +1,121 @@
+/* global styles */
+
+:root {
+    --primary-color: orange;
+    --secondary-color: rgb(34, 105, 133);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+}
+
+button,
+input {
+    font-family: inherit;
+    color: inherit;
+    font-size: inherit;
+    border: none;
+    outline: none;
+    background: none;
+}
+
+button {
+    cursor: pointer;
+    padding: 5px;
+}
+
+/* header */
+
+header {
+    background-color: var(--primary-color);
+    color: white;
+    padding: 25px 0px;
+}
+
+h1 {
+    text-align: center;
+    text-shadow: 1px 1px 5px #0008;
+}
+
+/* main container */
+
+main {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 15px;
+}
+
+/* menu */
+
+menu {
+    margin: 20px 0px;
+    display: flex;
+    gap: 20px;
+    justify-content: center;
+}
+menu button {
+    background-color: var(--secondary-color);
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+menu button:hover,
+menu button:focus-visible {
+    background-color: var(--primary-color);
+}
+
+/* list */
+
+#listElement {
+    list-style-type: none;
+}
+
+/* item */
+
+.item {
+    font-size: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin: 5px 0px;
+}
+
+.actionButton {
+    color: var(--secondary-color);
+}
+
+.actionButton:hover,
+.actionButton:focus-visible {
+    color: var(--primary-color);
+}
+
+.item .buyButton {
+    width: 30px;
+}
+
+.item input[type="text"] {
+    flex: 1;
+    padding: 10px;
+    border-radius: 6px;
+}
+
+.item input[type="text"]:focus {
+    background-color: #eee;
+}
+
+.item.done {
+    opacity: 0.3;
+}
+
+.item .deleteBtn:where(:not(:focus-visible, :hover)) {
+    color: red !important;
+}

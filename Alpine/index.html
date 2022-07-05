@@ -6,34 +6,52 @@
   <link rel="icon" type="image/png" href="favicon.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Shopping List | Alpine</title>
-
+  <link rel="stylesheet" href="src/style.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css"
+    integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g=="
+    crossorigin="anonymous" referrerpolicy="no-referrer" />
 </head>
 
 <body>
+
+  <header>
+    <h1>Shopping List</h1>
+  </header>
   <main x-data="{  list: JSON.parse(localStorage.getItem('list') ?? '[]') }">
     <menu>
-      <button @click="list = [newItem(), ...list]">+</button>
+      <button class="bigButton" id="addButton" aria-label="Add Item" @click="list = [newItem(), ...list]">
+        <i aria-hidden="true" class="fa-solid fa-plus"></i>
+      </button>
       <template x-if="list.length > 0">
-        <button @click="list=[]">x</button>
+        <button class="bigButton" id="trashButton" aria-label="Delete list"
+          @click="if (window.confirm('Do you really want to delete the whole list?')) list=[]; ">
+          <i aria-hidden=" true" class="fa-solid fa-trash-can"></i>
+        </button>
       </template>
     </menu>
     <template x-if="list.length > 0">
-      <ul>
+      <ul id="listElement">
         <template x-for="item in list" :key="item.id">
-          <li x-bind:class="item.done ? 'done' : ''" x-effect="if (item.new) {delete item.new; $refs.input?.focus();}">
-            <button class="buyButton" @click="item.done = !item.done;" x-html="item.done ? 'Unbuy' : 'Buy'">
+          <li class="item" x-bind:class="item.done ? 'done' : ''"
+            x-effect="if (item.new) {delete item.new; $refs.input?.focus();}">
+            <button class="actionButton buyButton" aria-label="Buy item" @click="item.done = !item.done;">
+              <i x-bind:class="item.done ?  'fa-solid fa-check' : 'fa-solid fa-basket-shopping'"></i>
             </button>
             <input x-ref="input" x-bind:disabled="item.done" type="text" x-model="item.name" />
-            <button @click="list=list.filter(s => s.id != item.id)">X</button>
+            <button class="actionButton deleteBtn" aria-label="Delete item"
+              @click="list=list.filter(s => s.id != item.id)">
+              <i aria-hidden="true" class="fa-solid fa-xmark"></i>
+            </button>
           </li>
         </template>
       </ul>
     </template>
     <template x-if="list.length == 0">
-      <p>Add items</p>
+      <p style="text-align: center;">Add items</p>
     </template>
     <div x-effect="localStorage.setItem('list',JSON.stringify(list))"></div>
   </main>
+
   <script src="src/main.js" type="module"></script>
 
 </body>
