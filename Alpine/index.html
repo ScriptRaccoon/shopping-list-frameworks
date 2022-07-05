@@ -6,10 +6,36 @@
   <link rel="icon" type="image/png" href="favicon.png" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Shopping List | Alpine</title>
+
 </head>
 
 <body>
+  <main x-data="{  list: JSON.parse(localStorage.getItem('list') ?? '[]') }">
+    <menu>
+      <button @click="list = [newItem(), ...list]">+</button>
+      <template x-if="list.length > 0">
+        <button @click="list=[]">x</button>
+      </template>
+    </menu>
+    <template x-if="list.length > 0">
+      <ul>
+        <template x-for="item in list" :key="item.id">
+          <li x-bind:class="item.done ? 'done' : ''" x-effect="if (item.new) {delete item.new; $refs.input?.focus();}">
+            <button class="buyButton" @click="item.done = !item.done;" x-html="item.done ? 'Unbuy' : 'Buy'">
+            </button>
+            <input x-ref="input" x-bind:disabled="item.done" type="text" x-model="item.name" />
+            <button @click="list=list.filter(s => s.id != item.id)">X</button>
+          </li>
+        </template>
+      </ul>
+    </template>
+    <template x-if="list.length == 0">
+      <p>Add items</p>
+    </template>
+    <div x-effect="localStorage.setItem('list',JSON.stringify(list))"></div>
+  </main>
   <script src="src/main.js" type="module"></script>
+
 </body>
 
 </html>
