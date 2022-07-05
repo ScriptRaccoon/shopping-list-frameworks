@@ -54,6 +54,17 @@ Size (built with Vite):
 
 The CSS-In-JS doesn't look minified in the output, so one can get the size even smaller here.
 
+## Alpine
+
+Demo: https://shopping-list-made-with-alpine.netlify.app
+
+Docs: https://alpinejs.dev/start-here
+
+Size (built with Vite):
+- HTML: 2.18 KB
+- JavaScript: 37.82 KB
+- CSS: 1.16 KB
+
 ## Vue
 
 Demo: https://shopping-list-made-with-vue.netlify.app
