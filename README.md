@@ -52,7 +52,7 @@ Size (built with Vite):
 - JavaScript: 29.7 KB
 - CSS: 0 KB (it's included in JS)
 
-The CSS-In-JS doesn't look minified in the output, so one can get the size even smaller here.
+The CSS-In-JS doesn't look minified in the output, so one can get the size even smaller here. Also I couldn't just import the fontawesome icons from a CDN, so I used their SVGs instead, which makes a) the CSS a bit more cumbersome, b) the design look a *little bit* different from the other versions.
 
 ## Alpine
 
