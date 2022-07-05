@@ -6,6 +6,8 @@ The very same shopping list SPA coded with several JavaScript frameworks in orde
 
 Vanilla JavaScript is also included. Strictly speaking, this is not a framework, but of course we need this as a reference here. As expected, Vanilla JavaScript has the smallest bundle size, but is a bit clumsy to write. The other frameworks here are sorted by their bundle size. The upshot is: **Svelte is really good, React is really bad.**
 
+This project is partly inspired by Fireship's [Comparison of 10 JavaScript frameworks](https://github.com/fireship-io/10-javascript-frameworks).
+ 
 ## Vanilla JavaScript
 
 Demo: https://shopping-list-made-with-vanilla-js.netlify.app
