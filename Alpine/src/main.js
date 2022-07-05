@@ -1,6 +1,10 @@
+import { debounce } from "./util.js";
 import Alpine from "alpinejs";
 
 Alpine.data("list", () => {
+    const debouncedSave = debounce((stuff) => {
+        localStorage.setItem("list", JSON.stringify(stuff));
+    }, 200);
     return {
         list: JSON.parse(localStorage.getItem("list") ?? "[]"),
         addItem() {
@@ -21,8 +25,7 @@ Alpine.data("list", () => {
                 this.list = [];
         },
         saveList() {
-            console.log("save to localstorage");
-            localStorage.setItem("list", JSON.stringify(this.list));
+            debouncedSave(this.list);
         },
     };
 });
