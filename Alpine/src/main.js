@@ -20,6 +20,10 @@ Alpine.data("list", () => {
             )
                 this.list = [];
         },
+        saveList() {
+            console.log("save to localstorage");
+            localStorage.setItem("list", JSON.stringify(this.list));
+        },
     };
 });
 

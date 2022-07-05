@@ -17,7 +17,7 @@
   <header>
     <h1>Shopping List</h1>
   </header>
-  <main x-data="list">
+  <main x-data="list" x-init="$watch('list',() => saveList())">
     <menu>
       <button class="bigButton" id="addButton" aria-label="Add Item" @click="addItem">
         <i aria-hidden="true" class="fa-solid fa-plus"></i>
@@ -34,7 +34,7 @@
           <li class="item" x-bind:class="item.done ? 'done' : ''"
             x-effect="if (item.new) {delete item.new; $refs.input?.focus();}">
             <button class="actionButton buyButton" aria-label="Buy item" @click="item.done = !item.done;">
-              <i x-bind:class="item.done ?  'fa-solid fa-check' : 'fa-solid fa-basket-shopping'"></i>
+              <i x-bind:class="item.done ? 'fa-solid fa-check' : 'fa-solid fa-basket-shopping'"></i>
             </button>
             <input x-ref="input" x-bind:disabled="item.done" type="text" x-model="item.name" />
             <button class="actionButton deleteBtn" aria-label="Delete item"
@@ -48,7 +48,6 @@
     <template x-if="list.length == 0">
       <p style="text-align: center;">Add items</p>
     </template>
-    <div x-effect="localStorage.setItem('list',JSON.stringify(list))"></div>
   </main>
 
   <script src="src/main.js" type="module"></script>
