@@ -37,7 +37,7 @@ Demo: https://shopping-list-made-with-solid.netlify.app
 Docs: https://www.solidjs.com/docs/latest
 
 Size (built with Vite):
-- HTML: 0.84 KB
+- HTML: 860 B
 - JavaScript: 12.98 KB
 - CSS: 1.25 KB
 
