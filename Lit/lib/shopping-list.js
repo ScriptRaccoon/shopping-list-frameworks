@@ -71,7 +71,6 @@ export class List extends LitElement {
         this._items = this._items.filter(
             (stuff) => stuff.id != item.id
         );
-        this.requestUpdate();
     }
 
     handleNewItem(item) {
@@ -141,9 +140,9 @@ export class List extends LitElement {
                             name=${item.name}
                             ?done=${item.done}
                             ?new=${item.new}
-                            @new=${() => this.handleNewItem(item)}
-                            @delete=${() => this.deleteItem(item)}
-                            @itemUpdated=${(e) =>
+                            @newItem=${() => this.handleNewItem(item)}
+                            @deleteItem=${() => this.deleteItem(item)}
+                            @updateItem=${(e) =>
                                 this.handleItemUpdate(e, item)}
                         ></shopping-item>`
                 )}

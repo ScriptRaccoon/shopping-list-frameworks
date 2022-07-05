@@ -68,7 +68,7 @@ export class Item extends LitElement {
 
     updated() {
         this.dispatchEvent(
-            new CustomEvent("itemUpdated", {
+            new CustomEvent("updateItem", {
                 detail: { name: this.name, done: this.done },
             })
         );
@@ -77,12 +77,12 @@ export class Item extends LitElement {
     firstUpdated() {
         if (this.new) {
             this.renderRoot.querySelector("input")?.focus();
-            this.dispatchEvent(new CustomEvent("new"));
+            this.dispatchEvent(new CustomEvent("newItem"));
         }
     }
 
     deleteItem() {
-        this.dispatchEvent(new CustomEvent("delete"));
+        this.dispatchEvent(new CustomEvent("deleteItem"));
     }
 
     render() {
